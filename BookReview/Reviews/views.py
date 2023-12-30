@@ -1,4 +1,4 @@
-from django.shortcuts import render
+"""from django.shortcuts import render
 
 def index(request):
     name = "world"
@@ -6,4 +6,12 @@ def index(request):
 
 def book_search(request):
     search_text = request.GET.get("search", "")
-    return render(request, "search-results.html", {"search_text":search_text})
+    return render(request, "search-results.html", {"search_text":search_text})"""
+
+from django.http import HttpResponse
+from .models import Book
+
+def welcome_view(request):
+    message = f"<html><h1>Welcome to Bookreview</h1>
+    <p>{Book.objects.count()} books and counting</p></html>"
+    return HttpResponse(message)
